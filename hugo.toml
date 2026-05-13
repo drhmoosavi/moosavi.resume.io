@@ -2,10 +2,14 @@ baseURL = "https://drhmoosavi.netlify.app/"
 locale = "en_US"
 title = "Hossein Moosavi"
 enableRobotsTXT = true
-disableKinds = ["home", "taxonomy", "term"]
+disableKinds = ["home"]
 
 [permalinks]
   posts = "/blog/:slug/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
 
 [params]
   author = "Hossein Moosavi"

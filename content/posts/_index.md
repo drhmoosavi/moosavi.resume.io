@@ -4,7 +4,7 @@ date: 2026-05-13
 slug: blog
 url: "/blog/"
 draft: false
-summary: "Markdown-based academic blog"
+summary: "Academic tutorials and methodological notes in genomics, transcriptomics, and biostatistics."
 ---
 
-Updates, notes, and writing in Markdown.
+Technical notes and practical tutorials focused on reproducible analyses in computational oncology and molecular data science.

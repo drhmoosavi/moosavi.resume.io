@@ -1,0 +1,229 @@
+.blog-container {
+  position: relative;
+}
+
+.blog-main {
+  padding-right: 2.5rem;
+  min-width: auto;
+}
+
+.blog-sidebar {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 3.6rem;
+}
+
+.blog-sidebar-card {
+  margin-bottom: 1rem;
+  border-top: 2px dashed var(--h1-color);
+  padding-top: 0.7rem;
+}
+
+.blog-sidebar-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.blog-header-block {
+  margin-top: 0.5rem;
+}
+
+.blog-intro {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.blog-controls {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 1fr) auto 180px auto;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.blog-control-item {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.95rem;
+}
+
+#blog-search,
+#blog-sort {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.96rem;
+  border: 1px solid var(--toggle-border-color);
+  border-radius: 0.35rem;
+  background: transparent;
+  color: var(--fg-color);
+  padding: 0.4rem 0.6rem;
+}
+
+.blog-result-count {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+  color: var(--h2-color);
+}
+
+.blog-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+  margin-bottom: 0.6rem;
+}
+
+.blog-chip {
+  border: 1px solid var(--toggle-border-color);
+  background: transparent;
+  color: var(--btn-txt-color);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.blog-chip.active {
+  background: var(--toggle-border-color);
+  color: var(--bg-color);
+}
+
+.blog-card {
+  border-top: 2px dashed var(--h1-color);
+  padding-top: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.blog-card h2 {
+  font-family: "Aleo", serif;
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+}
+
+.blog-card h2 a {
+  text-decoration: none;
+}
+
+.blog-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.87rem;
+  color: var(--h2-color);
+}
+
+.blog-summary {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-top: 0.55rem;
+}
+
+.blog-meta-tags {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.blog-meta-tags a,
+.blog-category-line a,
+.blog-tags-line a,
+.blog-prereq a {
+  text-decoration: none;
+}
+
+.blog-post-detail {
+  margin-top: 0.5rem;
+}
+
+.blog-post-header .section-title {
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.blog-prereq,
+.blog-category-line,
+.blog-tags-line {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+}
+
+.blog-toc-block {
+  border-top: 2px dashed var(--h1-color);
+  margin-top: 0.8rem;
+  padding-top: 0.5rem;
+}
+
+.blog-toc-block nav ul {
+  margin-top: 0.35rem;
+  padding-left: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.blog-post-content {
+  border-top: 2px dashed var(--h1-color);
+  margin-top: 0.8rem;
+  padding-top: 0.7rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.blog-post-content h2,
+.blog-post-content h3 {
+  font-family: "Aleo", serif;
+  line-height: 1.35;
+  margin-top: 1rem;
+}
+
+.blog-post-content code {
+  font-size: 0.92em;
+}
+
+.blog-contact-panel {
+  position: absolute;
+  top: 0.45rem;
+  right: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  z-index: 40;
+}
+
+.blog-contact-panel a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  border: 1px solid var(--toggle-border-color);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.77rem;
+  color: var(--btn-txt-color);
+  background: color-mix(in srgb, var(--bg-color) 80%, transparent);
+}
+
+.blog-contact-panel a:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1080px) {
+  .blog-controls {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .blog-contact-panel {
+    position: static;
+    margin: 0.4rem 0 0.2rem 0.8rem;
+  }
+
+  .blog-main {
+    padding-right: 1rem;
+  }
+}

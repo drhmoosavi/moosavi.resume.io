@@ -1,18 +1,98 @@
 {{ define "main" }}
-<section class="section-block">
+<section class="section-block blog-header-block">
   <h1 class="section-title">Blog</h1>
   {{ with .Content }}
-    <p style="font-family: IBM Plex Mono, monospace; font-size: 1rem;">{{ . | plainify }}</p>
+    <p class="blog-intro">{{ . | plainify }}</p>
   {{ end }}
+
+  <div class="blog-controls" aria-label="Blog search and sorting controls">
+    <label class="blog-control-item" for="blog-search">Search</label>
+    <input id="blog-search" type="search" placeholder="Search title, summary, categories, tags" autocomplete="off">
+
+    <label class="blog-control-item" for="blog-sort">Sort</label>
+    <select id="blog-sort">
+      <option value="newest">Newest</option>
+      <option value="oldest">Oldest</option>
+      <option value="title">Title A-Z</option>
+    </select>
+
+    <span id="blog-result-count" class="blog-result-count" aria-live="polite"></span>
+  </div>
+
+  <div class="blog-chip-row" id="blog-category-chips">
+    <button type="button" class="blog-chip active" data-cat="all">All</button>
+    {{ range $name, $_ := .Site.Taxonomies.categories }}
+      <button type="button" class="blog-chip" data-cat="{{ $name | lower }}">{{ $name }}</button>
+    {{ end }}
+  </div>
 </section>
 
-<section class="section-block">
+<section class="section-block" data-blog-list>
   {{ range .Pages.ByDate.Reverse }}
-    <article class="expertise-subsection" style="border-top: 2px dashed var(--h1-color); padding-top: 0.8rem; margin-bottom: 1rem;">
-      <h2 style="font-family: Aleo, serif;"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-      <p class="publication-date">{{ .Date.Format "January 2, 2006" }}</p>
-      {{ with .Params.summary }}<p style="font-family: IBM Plex Mono, monospace; font-size: 0.98rem;">{{ . }}</p>{{ end }}
+    <article class="blog-card"
+      data-title="{{ .Title | lower }}"
+      data-summary="{{ with .Params.summary }}{{ . | lower }}{{ end }}"
+      data-date="{{ .Date.Unix }}"
+      data-categories="{{ range $idx, $cat := .Params.categories }}{{ if $idx }},{{ end }}{{ $cat | lower }}{{ end }}"
+      data-tags="{{ range $idx, $tag := .Params.tags }}{{ if $idx }},{{ end }}{{ $tag | lower }}{{ end }}">
+
+      <header class="blog-card-header">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <div class="blog-meta-row">
+          <span>{{ .Date.Format "January 2, 2006" }}</span>
+          {{ if ne .Lastmod .Date }}<span>Updated {{ .Lastmod.Format "January 2, 2006" }}</span>{{ end }}
+          <span>{{ with .Params.readingTimeHint }}{{ . }}{{ else }}~{{ .ReadingTime }} min read{{ end }}</span>
+        </div>
+      </header>
+
+      {{ with .Params.summary }}<p class="blog-summary">{{ . }}</p>{{ end }}
+
+      <div class="blog-meta-tags">
+        {{ with .Params.categories }}
+          <div>
+            <strong>Categories:</strong>
+            {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/">{{ $cat }}</a>{{ end }}
+          </div>
+        {{ end }}
+        {{ with .Params.tags }}
+          <div>
+            <strong>Tags:</strong>
+            {{ range $i, $tag := . }}{{ if $i }}, {{ end }}<a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}/">{{ $tag }}</a>{{ end }}
+          </div>
+        {{ end }}
+      </div>
     </article>
   {{ end }}
+</section>
+{{ end }}
+
+{{ define "sidebar" }}
+<section class="section-block blog-sidebar-card">
+  <h3>Categories</h3>
+  <ul>
+    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+      <li><a href="{{ "/categories/" | relURL }}{{ $name | urlize }}/">{{ $name }}</a> ({{ len $taxonomy }})</li>
+    {{ end }}
+  </ul>
+</section>
+
+<section class="section-block blog-sidebar-card">
+  <h3>Tags</h3>
+  <ul>
+    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      <li><a href="{{ "/tags/" | relURL }}{{ $name | urlize }}/">{{ $name }}</a> ({{ len $taxonomy }})</li>
+    {{ end }}
+  </ul>
+</section>
+
+<section class="section-block blog-sidebar-card">
+  <h3>Featured Tutorials</h3>
+  <ul>
+    {{ range where .Pages "Params.featured" true }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ else }}
+      <li>No featured tutorials yet.</li>
+    {{ end }}
+  </ul>
 </section>
 {{ end }}

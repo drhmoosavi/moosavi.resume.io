@@ -1,13 +1,60 @@
 {{ define "main" }}
-<article class="section-block">
-  <h1 class="section-title">{{ .Title }}</h1>
-  <p class="publication-date">{{ .Date.Format "January 2, 2006" }}</p>
-  {{ with .Params.summary }}<p style="font-family: IBM Plex Mono, monospace; font-size: 1rem;">{{ . }}</p>{{ end }}
-
-  <section class="expertise-subsection" style="border-top: 2px dashed var(--h1-color); margin-top: 0.8rem; padding-top: 0.8rem;">
-    <div style="font-family: IBM Plex Mono, monospace; font-size: 1rem; line-height: 1.6;">
-      {{ .Content }}
+<article class="section-block blog-post-detail">
+  <header class="blog-post-header">
+    <h1 class="section-title">{{ .Title }}</h1>
+    <div class="blog-meta-row">
+      <span>{{ .Date.Format "January 2, 2006" }}</span>
+      {{ if ne .Lastmod .Date }}<span>Updated {{ .Lastmod.Format "January 2, 2006" }}</span>{{ end }}
+      <span>{{ with .Params.readingTimeHint }}{{ . }}{{ else }}~{{ .ReadingTime }} min read{{ end }}</span>
+      {{ with .Params.difficulty }}<span>Difficulty: {{ . }}</span>{{ end }}
     </div>
+
+    {{ with .Params.prerequisites }}
+      <p class="blog-prereq"><strong>Prerequisites:</strong> {{ delimit . ", " }}</p>
+    {{ end }}
+
+    {{ with .Params.categories }}
+      <p class="blog-category-line"><strong>Category:</strong> {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/">{{ $cat }}</a>{{ end }}</p>
+    {{ end }}
+
+    {{ with .Params.tags }}
+      <p class="blog-tags-line"><strong>Tags:</strong> {{ range $i, $tag := . }}{{ if $i }}, {{ end }}<a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}/">{{ $tag }}</a>{{ end }}</p>
+    {{ end }}
+
+    {{ with .Params.summary }}<p class="blog-summary">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ if ne .Params.toc false }}
+    <section class="section-block blog-toc-block">
+      <h2 class="section-title">Table of Contents</h2>
+      <nav aria-label="Table of contents">
+        {{ .TableOfContents }}
+      </nav>
+    </section>
+  {{ end }}
+
+  <section class="expertise-subsection blog-post-content">
+    {{ .Content }}
   </section>
 </article>
+{{ end }}
+
+{{ define "sidebar" }}
+<section class="section-block blog-sidebar-card">
+  <h3>Post Navigation</h3>
+  <ul>
+    {{ with .PrevInSection }}<li><strong>Previous:</strong> <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+    {{ with .NextInSection }}<li><strong>Next:</strong> <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+    {{ if and (not .PrevInSection) (not .NextInSection) }}<li>No adjacent posts yet.</li>{{ end }}
+  </ul>
+</section>
+
+<section class="section-block blog-sidebar-card">
+  <h3>Recent Posts</h3>
+  <ul>
+    {{ range first 8 (where .Site.RegularPages "Section" "posts") }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</section>
 {{ end }}
