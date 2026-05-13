@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  {{ partial "nav.html" . }}
+
+  <main class="site-main" id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <aside class="site-sidebar" aria-label="Contact and profiles">
+    {{ partial "social-icons.html" . }}
+  </aside>
+
+  {{ partial "footer.html" . }}
+
+  <script src="{{ "js/toggle.js" | relURL }}" defer></script>
+</body>
+</html>
