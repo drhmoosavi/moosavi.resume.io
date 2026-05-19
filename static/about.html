@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/publication.css">
  </head>
  
- <body>
+ <body class="expertise-page">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script type="module" src="/slider.js"></script>
@@ -23,37 +23,88 @@
   <script type="module" src="/toggle.js"></script>
 
  <!-- Nav bar -->
-    <div class="container">
+    <div class="container nav-transition" id="appContainer">
         <div class="nav-bar">
+          <div class="head-buttons">
             <button class="toggle">
               <span class="material-symbols-outlined icon-sun">light_mode</span>
               <span class="material-symbols-outlined icon-moon">dark_mode</span>
             </button>
-    
-          <div class="head-buttons">
             <a href="/">Home</a>
             <a href="/about.html">Expertise</a>
-            <a href="/research.html">Research</a>
-            <a href="/projects.html">Projects</a>
             <a href="/blog/">Blog</a>
           </div>
         </div>
         
         <!-- Main grid -->
         <div class="left-col">
-          <section class="section-block">
+          <nav class="about-jump-island" aria-label="Expertise section navigation">
+            <a href="#about-anchor">About</a>
+            <a href="#projects-anchor">Projects</a>
+            <a href="#profile-anchor">Profile</a>
+            <a href="#skills-anchor">Skills</a>
+            <a href="#work-experience-anchor">Work experience</a>
+            <a href="#education-anchor">Education</a>
+          </nav>
+
+          <section class="section-block about-section" id="about-anchor">
             <h2 class="section-title animate__animated animate__flipInX" style="animation-delay: 0.7s;">About</h2>
             <img src="/asset/moosavi_Ine Eriksen UIO.jpg" alt="Dr. Hossein Moosavi" class="profile-photo" />
-            <p style="text-align: justify; font-family: IBM Plex Mono, monospace; font-size: 1.12rem; word-spacing: -7px; ">
+            <p class="about-copy">
               I am passionate about addressing major challenges and unmet clinical needs in oncology to improve patient outcomes.
               I help research projects deliver meaningful, actionable insights at the intersection of cancer biology, bioinformatics, and machine learning.
               I lead and advise on study design and execution, provide comprehensive data analysis, and interpret results clearly.
               I organize and facilitate collaboration among biologists, clinicians, and bioinformaticians, emphasizing efficiency and high-quality deliverables on time.
               I communicate key findings to stakeholders and diverse external audiences through clear presentations and concise reports that highlight the essentials.
             </p>
+
+            <div class="expertise-subsection about-subsection-compact" id="research-scope-anchor">
+              <h3>Research scope</h3>
+              <p class="about-copy">
+                In metastatic cancers, tumors spread and evolve as heterogeneous cell populations with distinct molecular programs. This heterogeneity drives mixed treatment responses and creates resistant niches that survive therapy. My work focuses on connecting tumor evolution, transcriptomic states, and clinically actionable response patterns in patient-centered models.
+              </p>
+            </div>
+
+            <div class="expertise-subsection about-subsection-compact" id="research-interests-anchor">
+              <h3>Research interests</h3>
+              <ul class="about-copy">
+                <li>Molecular tumor heterogeneity and clonal dynamics in metastatic cancers</li>
+                <li>Metastatic development and evolutionary selection under treatment pressure</li>
+                <li>Patient-derived organoid modeling for treatment response and biomarker discovery</li>
+              </ul>
+            </div>
+
+            <div class="expertise-subsection about-subsection-compact" id="projects-anchor">
+              <h3>Projects</h3>
+              <ul class="about-copy">
+                <li>Translational oncology workstreams for biomarker-guided treatment modeling</li>
+                <li>Reproducible transcriptomics and multi-modal integration pipelines</li>
+                <li>Publication-ready analytics and collaborative reporting workflows</li>
+              </ul>
+            </div>
           </section>
 
-          <section class="section-block">
+          <section class="section-block" id="work-experience-anchor">
+            <h2 class="section-title">Work experience</h2>
+            <div class="expertise-subsection">
+              <h3>Postdoctoral Researcher, University of Oslo</h3>
+              <ul>
+                <li>Led translational oncology analyses integrating molecular and clinical datasets.</li>
+                <li>Developed reproducible pipelines for transcriptomics and biomarker discovery.</li>
+                <li>Coordinated interdisciplinary collaborations with clinicians and bioinformatics teams.</li>
+              </ul>
+            </div>
+            <div class="expertise-subsection">
+              <h3>Doctoral Researcher, University of Oslo</h3>
+              <ul>
+                <li>Investigated metastatic tumor heterogeneity and treatment-response mechanisms.</li>
+                <li>Performed high-dimensional statistical analyses and publication-grade reporting.</li>
+                <li>Mentored junior researchers and supported project planning and execution.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section-block" id="profile-anchor">
             <h2 class="section-title">Profile</h2>
             <div class="expertise-subsection">
               <h3>Domain Expertise</h3>
@@ -100,7 +151,7 @@
             </div>
           </section>
 
-          <section class="section-block">
+          <section class="section-block" id="skills-anchor">
             <h2 class="section-title">Skills</h2>
             <div class="expertise-subsection">
               <h3>Machine Learning & Deep Learning</h3>
@@ -143,11 +194,17 @@
             </div>
           </section>
 
-          <section class="section-block">
+          <section class="section-block" id="education-anchor">
             <h2 class="section-title">Education</h2>
             <ul>
-              <li>Ph.D., Faculty of Medicine, University of Oslo, Norway (Oct 2016-May 2023). Thesis: <a href="https://www.duo.uio.no/handle/10852/102470?show=full" target="_blank" rel="noopener noreferrer">Transcriptomic and Pharmacological Tumor Heterogeneity of Metastatic Colorectal Cancer</a></li>
-              <li>M.Sc., Faculty of Mathematics and Natural Sciences, University of Oslo, Norway (Aug 2014-June 2016). Thesis: <a href="https://www.duo.uio.no/handle/10852/52500?show=full" target="_blank" rel="noopener noreferrer">A Non-Invasive Insight into Soft-Tissue Sarcomas</a></li>
+              <li>
+                Ph.D., Faculty of Medicine, University of Oslo, Norway (Oct 2016-May 2023).<br>
+                <span class="thesis-line">Thesis: <a href="https://www.duo.uio.no/handle/10852/102470?show=full" target="_blank" rel="noopener noreferrer">Transcriptomic and Pharmacological Tumor Heterogeneity of Metastatic Colorectal Cancer</a></span>
+              </li>
+              <li>
+                M.Sc., Faculty of Mathematics and Natural Sciences, University of Oslo, Norway (Aug 2014-June 2016).<br>
+                <span class="thesis-line">Thesis: <a href="https://www.duo.uio.no/handle/10852/52500?show=full" target="_blank" rel="noopener noreferrer">A Non-Invasive Insight into Soft-Tissue Sarcomas</a></span>
+              </li>
               <li>B.Sc., Faculty of Biology, Azad University, Tehran, Iran (Sept 2009-Feb 2013)</li>
             </ul>
           </section>
@@ -165,5 +222,46 @@
         </div>
 
         </div>
+
+  <script>
+    (function () {
+      const jumpLinks = document.querySelectorAll('.about-jump-island a[href^=\"#\"]');
+      const scrollBox = document.querySelector('.expertise-page .left-col');
+      if (!jumpLinks.length || !scrollBox) return;
+
+      function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function animatedScrollTo(container, to, duration) {
+        const start = container.scrollTop;
+        const change = to - start;
+        const startTime = performance.now();
+
+        function animate(currentTime) {
+          const elapsed = currentTime - startTime;
+          const t = Math.min(elapsed / duration, 1);
+          container.scrollTop = start + change * easeInOutCubic(t);
+          if (t < 1) requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      jumpLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          if (!target) return;
+
+          const containerTop = scrollBox.getBoundingClientRect().top;
+          const targetTop = target.getBoundingClientRect().top;
+          const offset = targetTop - containerTop + scrollBox.scrollTop - 14;
+          animatedScrollTo(scrollBox, offset, 900);
+        });
+      });
+    })();
+  </script>
+  <script type="module" src="/nav-transition.js"></script>
 </body>
 </html>

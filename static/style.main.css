@@ -432,7 +432,8 @@ p {
   justify-content: center;
   align-items: center;
   flex-direction: row;        /* Arrange buttons in a row */
-  gap: 2rem;                  /* Set space between buttons */
+  gap: 1.1rem;                  /* Set space between buttons */
+  width: 100%;
   transition: box-shadow 0.3s ease, transform 0.2s ease-in-out; /* Smooth transition for shadow and transform */
 }
 /* Styles for each link/button within head-buttons */
@@ -440,13 +441,13 @@ p {
   text-decoration: none;
   background: none;           /* Remove any default background */
   border: none;               /* Remove border styling */
-  padding-top: 1rem;          /* Add spacing at the top */
+  padding-top: 0.5rem;          /* Add spacing at the top */
   transition: transform 0.2s ease; /* Smooth scaling transition on hover */
   color: var(--btn-txt-color); /* Use button text color from theme */
-  font-size: 2.2rem;            /* Set large font size for emphasis */
+  font-size: 1.18rem;            /* Blog-aligned size */
   font-weight: 800;           /* Use a bold font weight */
   font-family: "berthusen", sans-serif; /* Use custom font with fallback */
-  letter-spacing: 0.17rem;    /* Increase spacing between letters */
+  letter-spacing: 0.045rem;    /* Increase spacing between letters */
   cursor: pointer;            /* Change cursor to pointer on hover */
   display: inline-block;      /* Ensure proper spacing and transform behavior */
    /* common animation settings */
@@ -480,8 +481,8 @@ p {
 /* Toggle ICONS + TRANSITION  */
 .toggle {
   position: relative;
-  top: -0.2rem;
-  left: 0.7rem;
+  top: 0;
+  left: 0.22rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -489,13 +490,14 @@ p {
   color: transparent;
   border: 0px solid var(--toggle-border-color);
   border-radius: 50%;
-  height: 48px;
-  width: 48px;
+  height: 1.4rem;
+  width: 1.4rem;
   cursor: pointer;
   z-index: var(--z-theme-button);
   box-shadow: 0 0 7px var(--toggle-border-color); /* Added box shadow */
   transition: box-shadow 0.3s ease, transform 0.2s ease-in-out; /* Smooth transition for shadow and transform */
   animation: floatFadeIn 0.3s ease-out forwards;
+  margin-top: 0.02rem;
 }
 
 .toggle:hover {
@@ -516,7 +518,7 @@ p {
   .toggle .icon-sun,
   .toggle .icon-moon {
     /* Set icon size */
-    font-size: 2.2rem;
+    font-size: 0.84rem;
     font-weight: 100;
     /* Position icons absolutely within toggle button */
     position: absolute;
@@ -572,11 +574,11 @@ p {
   
   .head-buttons {
     font-size: 5rem;
-    gap: 3rem;
+    gap: 1.3rem;
   }
   
   .head-buttons > a {
-    font-size: 3rem;
+    font-size: 1.35rem;
   }
 }
 
@@ -614,11 +616,11 @@ p {
   margin-top: 7%;
   width: 90%; /* Adjust width for smaller screens */
   overflow: visible;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
 .head-buttons > a {
-  font-size: 1em; /* Adjust font size for smaller screens */ 
+  font-size: 0.95em; /* Adjust font size for smaller screens */ 
   letter-spacing: 0rem; /* Adjust letter spacing */
 }
 }
@@ -636,4 +638,261 @@ p {
   box-shadow:
     inset 0 0 8px 4px #000000df,
     inset 0 0 16px 8px #000000cb;
+}
+
+/* ====================
+   Expertise Page Overrides
+   ==================== */
+:root:not([data-theme="dark"]) .expertise-page {
+  --expertise-c1: #662F00FF;
+  --expertise-c2: #996035FF;
+  --expertise-c3: #CC9B7AFF;
+  --expertise-c4: #D8AF97FF;
+  --expertise-c5: #26322CFF;
+  --expertise-c6: #384D3FFF;
+  --expertise-c7: #777768FF;
+  --expertise-c8: #290AD8FF;
+  --expertise-c9: #264DFFFF;
+  --expertise-c10: #3FA0FFFF;
+}
+
+.expertise-page .left-col {
+  min-width: 0;
+  padding-right: 3rem;
+}
+
+.expertise-page .container {
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 0.2fr 2.1fr 0.2fr;
+  grid-template-areas:
+    "nav-bar nav-bar"
+    "left-col right-col"
+    "footer footer";
+}
+
+.expertise-page .about-section {
+  max-width: min(100%, 112ch);
+}
+
+.expertise-page .about-copy {
+  max-width: 78ch;
+  text-align: justify;
+  text-wrap: pretty;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.02rem;
+  line-height: 1.58;
+  word-spacing: normal;
+}
+
+.expertise-page .about-subsection-compact {
+  margin-top: 0.35rem;
+}
+
+.expertise-page .about-subsection-compact h3 {
+  font-size: 1.14rem;
+  line-height: 1.25;
+}
+
+.expertise-page .about-subsection-compact p,
+.expertise-page .about-subsection-compact ul,
+.expertise-page .about-subsection-compact li {
+  font-size: 0.93rem;
+  line-height: 1.45;
+}
+
+.expertise-page .about-subsection-compact ul {
+  max-width: 75ch;
+  text-align: left;
+}
+
+.expertise-page .about-subsection-compact li,
+.expertise-page .about-subsection-compact p {
+  text-align: left;
+  word-spacing: normal;
+}
+
+.expertise-page .about-section .profile-photo {
+  width: clamp(220px, 33%, 360px);
+  height: auto;
+  aspect-ratio: 3 / 4;
+  float: right;
+  margin: 0.25rem 0 1.2rem 2rem;
+  object-fit: cover;
+}
+
+.expertise-page .about-jump-island {
+  position: sticky;
+  top: 0.9rem;
+  left: auto;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.16rem;
+  width: max-content;
+  min-width: max-content;
+  padding: 0.2rem 0.14rem;
+  border-radius: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--toggle-border-color) 24%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--toggle-border-color) 50%, transparent);
+  background: color-mix(in srgb, var(--bg-color) 70%, transparent);
+  backdrop-filter: blur(14px) saturate(122%);
+  -webkit-backdrop-filter: blur(14px) saturate(122%);
+  justify-self: end;
+  margin-left: auto;
+  margin-right: 0;
+  transform: translateX(50%);
+}
+
+.expertise-page .about-jump-island a {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.12rem 0.18rem;
+  border-radius: 999px;
+  color: var(--btn-txt-color);
+  border: none;
+  background: transparent;
+  transition: transform 0.9s cubic-bezier(0.42, 0, 0.58, 1), box-shadow 0.9s cubic-bezier(0.42, 0, 0.58, 1), color 0.7s ease-in-out;
+}
+
+.expertise-page .about-jump-island a:hover {
+  transform: scale(1.04) translateX(2px);
+  box-shadow: none;
+}
+
+.expertise-page .nav-bar {
+  align-items: center;
+}
+
+.expertise-page .head-buttons {
+  align-items: center;
+}
+
+.expertise-page .head-buttons > a {
+  padding-top: 1rem;
+}
+
+.expertise-page .head-buttons .toggle,
+.blog-container .head-buttons .toggle {
+  align-self: center;
+  margin-top: 0;
+  margin-left: 0.16rem;
+}
+
+.expertise-page .head-buttons,
+.blog-container .head-buttons {
+  align-items: center;
+}
+
+.thesis-line {
+  display: inline-block;
+  margin-top: 0.1rem;
+  font-size: 0.86em;
+  line-height: 1.28;
+}
+
+.expertise-page .right-col {
+  box-shadow: none;
+  border-radius: 0;
+  border-left: 1px solid color-mix(in srgb, var(--toggle-border-color) 45%, transparent);
+  background: transparent;
+  padding-left: 1.4rem;
+  padding-top: 0.6rem;
+}
+
+.nav-transition {
+  transition: opacity 0.34s cubic-bezier(0.42, 0, 0.58, 1), transform 0.34s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.nav-transition.page-leaving {
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+@media (min-width: 1600px) {
+  .expertise-page .left-col {
+    padding-right: 5rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .expertise-page .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.16fr auto auto;
+    grid-template-areas:
+      "nav-bar"
+      "left-col"
+      "right-col";
+  }
+
+  .expertise-page .left-col {
+    padding-right: 1.6rem;
+  }
+
+  .expertise-page .about-section .profile-photo {
+    float: none;
+    display: block;
+    margin: 0.4rem auto 1rem auto;
+    width: min(72vw, 300px);
+  }
+
+  .expertise-page .about-copy {
+    max-width: 100%;
+  }
+
+  .expertise-page .about-jump-island {
+    position: static;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0.2rem auto 0.55rem auto;
+    border-radius: 0.72rem;
+    border: 1px solid color-mix(in srgb, var(--toggle-border-color) 24%, transparent);
+  }
+
+  .expertise-page .right-col {
+    border-left: none;
+    padding-left: 1rem;
+  }
+}
+
+/* Light-mode palette application for Expertise tab */
+:root:not([data-theme="dark"]) .expertise-page .section-title {
+  color: var(--expertise-c1);
+}
+
+:root:not([data-theme="dark"]) .expertise-page .expertise-subsection h3 {
+  color: var(--expertise-c8);
+}
+
+:root:not([data-theme="dark"]) .expertise-page p,
+:root:not([data-theme="dark"]) .expertise-page li {
+  color: var(--expertise-c6);
+}
+
+:root:not([data-theme="dark"]) .expertise-page ul {
+  color: var(--expertise-c6);
+}
+
+:root:not([data-theme="dark"]) .expertise-page li::marker {
+  color: var(--expertise-c3);
+}
+
+:root:not([data-theme="dark"]) .expertise-page a {
+  color: var(--expertise-c9);
+}
+
+:root:not([data-theme="dark"]) .expertise-page a:hover {
+  color: var(--expertise-c10);
+}
+
+:root:not([data-theme="dark"]) .expertise-page .about-subsection-compact {
+  border-top: 1px dashed var(--expertise-c4);
+  padding-top: 0.35rem;
 }

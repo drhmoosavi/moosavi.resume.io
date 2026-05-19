@@ -1,7 +1,12 @@
 {{ define "main" }}
 <article class="section-block blog-post-detail">
   <header class="blog-post-header">
-    <h1 class="section-title">{{ .Title }}</h1>
+    <div class="blog-title-row">
+      <a class="blog-back-link" href="{{ "/blog/" | relURL }}" aria-label="Return to blog home">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <h1 class="section-title">{{ .Title }}</h1>
+    </div>
     <div class="blog-meta-row">
       <span>{{ .Date.Format "January 2, 2006" }}</span>
       {{ if ne .Lastmod .Date }}<span>Updated {{ .Lastmod.Format "January 2, 2006" }}</span>{{ end }}
@@ -40,6 +45,8 @@
 {{ end }}
 
 {{ define "sidebar" }}
+{{ partial "blog_sidebar_sections.html" . }}
+
 <section class="section-block blog-sidebar-card">
   <h3>Post Navigation</h3>
   <ul>

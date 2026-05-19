@@ -67,20 +67,13 @@
 {{ end }}
 
 {{ define "sidebar" }}
+{{ partial "blog_sidebar_sections.html" . }}
+
 <section class="section-block blog-sidebar-card">
   <h3>Categories</h3>
   <ul>
     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
       <li><a href="{{ "/categories/" | relURL }}{{ $name | urlize }}/">{{ $name }}</a> ({{ len $taxonomy }})</li>
-    {{ end }}
-  </ul>
-</section>
-
-<section class="section-block blog-sidebar-card">
-  <h3>Tags</h3>
-  <ul>
-    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-      <li><a href="{{ "/tags/" | relURL }}{{ $name | urlize }}/">{{ $name }}</a> ({{ len $taxonomy }})</li>
     {{ end }}
   </ul>
 </section>
@@ -94,5 +87,17 @@
       <li>No featured tutorials yet.</li>
     {{ end }}
   </ul>
+</section>
+
+<section class="section-block blog-sidebar-card blog-sidebar-tags-card">
+  <h3>Tags</h3>
+  <div class="blog-tag-box-grid">
+    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      <a class="blog-tag-box" href="{{ "/tags/" | relURL }}{{ $name | urlize }}/">
+        <span class="blog-tag-label">{{ $name }}</span>
+        <span class="blog-tag-count">{{ len $taxonomy }}</span>
+      </a>
+    {{ end }}
+  </div>
 </section>
 {{ end }}

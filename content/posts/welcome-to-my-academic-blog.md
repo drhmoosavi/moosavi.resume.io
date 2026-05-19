@@ -5,7 +5,7 @@ lastmod: 2026-05-13
 slug: biostatistics-foundations-omics
 draft: false
 summary: "A practical guide to study design, confounding control, power intuition, FDR management, and interpretation for genomics and transcriptomics analyses."
-tags: ["biostatistics", "genomics", "transcriptomics", "multiple-testing", "fdr"]
+tags: ["biostatistics", "genomics", "transcriptomics", "multiple-testing", "fdr", "intersting-papers", "computional-biology", "r-tutorials", "applied-biostats", "methods"]
 categories: ["tutorial", "biostatistics"]
 authors: ["Hossein Moosavi"]
 featured: true

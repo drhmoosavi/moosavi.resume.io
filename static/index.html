@@ -27,19 +27,15 @@
  
  <body>
  <!-- Nav bar -->
-    <div class="container" id="appContainer">
+    <div class="container nav-transition" id="appContainer">
         <div class="nav-bar">
-          
-          <button class="toggle" style="visibility: hidden;">
+          <div class="head-buttons">
+            <button class="toggle" style="visibility: hidden;">
               <span class="material-symbols-outlined icon-sun">light_mode</span>
               <span class="material-symbols-outlined icon-moon">dark_mode</span>
             </button>
-          
-          <div class="head-buttons">
             <a href="/">Home</a>
-            <a href="/research.html">Research</a>
             <a href="/about.html">Expertise</a>
-            <a href="/projects.html">Projects</a>
             <a href="/blog/">Blog</a>
           </div>
 
@@ -94,37 +90,7 @@
   <script type="module" src="/toggle.js"></script>
   <script type="module" src="/connect.net.js"></script>
   <script type="module" src="/three.js"></script>
-  <script>
-    // 1. Grab all nav links and the wrapper container
-    const links = document.querySelectorAll('.head-buttons a');
-    const container = document.getElementById('appContainer');
-  
-    links.forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        const targetUrl = link.getAttribute('href');
-
-        // kill any ongoing GSAP tweens on the container so CSS animation can take over
-        gsap.killTweensOf(container);
-        // if you have a Three.js render loop, stop it here to avoid conflicts
-        if (window.threeJsAnimationLoop && typeof window.threeJsAnimationLoop.stop === 'function') {
-          window.threeJsAnimationLoop.stop();
-        }
-        // 2. Exit animation via GSAP
-        gsap.to(container, {
-          duration: 0.5,
-          opacity: 0,
-          scale: 0,
-          transformOrigin: "center center",
-          ease: "power1.in",
-          overwrite: true,
-          onComplete() {
-            window.location.href = targetUrl;
-          }
-        });
-      });
-    });
-  </script>
+  <script type="module" src="/nav-transition.js"></script>
 
 </div>
 </body>

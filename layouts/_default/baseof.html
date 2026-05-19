@@ -4,15 +4,11 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <div class="container blog-container" id="appContainer">
+  <div class="container blog-container nav-transition" id="appContainer">
     {{ partial "nav.html" . }}
     {{ partial "blog_contact_panel.html" . }}
 
-    <main class="left-col blog-main" id="main-content">
-      {{ block "main" . }}{{ end }}
-    </main>
-
-    <aside class="right-col blog-sidebar" aria-label="Blog sidebar">
+    <aside class="blog-left-sidebar" aria-label="Blog sidebar">
       {{ block "sidebar" . }}
       <section class="section-block blog-sidebar-card">
         <h3>Recent Posts</h3>
@@ -25,12 +21,15 @@
       {{ end }}
     </aside>
 
-    {{ partial "footer.html" . }}
+    <main class="blog-main" id="main-content">
+      {{ block "main" . }}{{ end }}
+    </main>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script type="module" src="{{ "/toggle.js" | relURL }}"></script>
   <script type="module" src="{{ "/blog.js" | relURL }}"></script>
+  <script type="module" src="{{ "/nav-transition.js" | relURL }}"></script>
 </body>
 </html>
