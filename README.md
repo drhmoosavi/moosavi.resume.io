@@ -1,6 +1,6 @@
 # Hossein Moosavi Website
 
-Hugo-based academic website and blog for `drhmoosavi/moosavi.resume.io`.
+Hugo-based academic website and blog for `drhmoosavi/drhmoosavi.github.io` (target).
 
 ## Structure
 
@@ -44,3 +44,8 @@ Use the following front matter keys for `posts`, `publications`, `projects`, and
 - Optional: `summary`, `tags`, `categories`, `authors`, `links`, `featured`
 
 Blog URLs are served under `/blog/`.
+
+## Publishing Targets
+
+- Primary target (GitHub Pages): `https://drhmoosavi.github.io/`
+- Netlify fallback: `https://moosavi-resume-io.netlify.app/`
